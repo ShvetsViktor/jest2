@@ -55,6 +55,24 @@ function showTurns() {
     }, 800)
 }
 
+/**
+ * сохранить выбор игрока playerMoves и сравнить с тем что показал компьютер currentGame.
+ * 2. если выбор игрока совпадает (e.target.getAttribute("id", "circle" === currentGame)) то обновить game.score результат и показать новую последовательность от компьютера
+ */
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length === game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        }
+    }
+    else {
+        alert("Wrong move!");
+        newGame();
+    }
+}
 
 /**
  * 
@@ -69,4 +87,4 @@ function addTurn() {
     showTurns();
 }
 
-module.exports = { game, newGame, showScore, addTurn, showTurns, lightsOn };
+module.exports = { game, newGame, showScore, addTurn, showTurns, lightsOn, playerTurn };
