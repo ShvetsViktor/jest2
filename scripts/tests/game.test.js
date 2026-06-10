@@ -20,8 +20,11 @@ describe('game object contains correct keys', () => {
     test('playerMoves key exists', () => {
         expect('playerMoves' in game).toBe(true);
     });
-    test('choices contains correct ids', () => {
+    test('choices contain correct ids', () => {
         expect(game.choices).toEqual(['button1', 'button2', 'button3', 'button4']);
+    });
+    test("turnNumber key exists", () => {
+        expect("turnNumber" in game).toBe(true);
     });
 });
 
@@ -45,6 +48,11 @@ describe('newGame() function', () => {
     });
     test('should display 0 for the el with id of score', () => {
         expect(document.getElementById("score").innerText).toEqual(0);
+    });
+    test("all divs has data-listener attribute set to true", () => {
+        for (let el of document.getElementsByClassName("circle")) {
+            expect(el.getAttribute("data-listener")).toBe("true");
+        }
     });
 });
 
